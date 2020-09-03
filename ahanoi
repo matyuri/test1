@@ -1,0 +1,17 @@
+def ahanoi(numRings,startPeg,endPeg):
+		numMoves = 0
+		if numRings == 0:
+			print('Move ring', numRings, 'from peg', startPeg, 'to peg', 6- startPeg -endPeg)
+			print('Move ring', numRings, 'from peg', 6- startPeg -endPeg, 'to peg', endPeg)
+			numMoves += 2
+		else:
+			numMoves += hanoi(numRings - 1, startPeg, endPeg)
+			print('Move ring', numRings, 'from peg', startPeg, 'to peg', 6- startPeg -endPeg)
+			numMoves += 1
+			numMoves += ahanoi(numRings -1,  endPeg, startPeg)
+			print('Move ring', numRings, 'from peg', 6- startPeg -endPeg, 'to peg', endPeg)
+			numMoves += 1
+			numMoves += ahanoi(numRings -1,  startPeg, endPeg)
+	return numMoves
+
+hanoi(3,1,3)
